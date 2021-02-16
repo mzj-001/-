@@ -4,13 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8"> 
 <title>新概念解密</title> 
-<script>
-function clear() {
-Source=document.body.firstChild.data;
-document.open();
-document.close();
-document.body.innerHTML=Source;
-}
+
 </script>
 <style>
 div.example {
@@ -25,17 +19,33 @@ div.example {
 }
 </style>
 <script>
-            document.oncontextmenu = function () { return false; };
-            document.onkeydown = function () {
-                if (window.event && window.event.keyCode == 123) {
-                    event.keyCode = 0;
-                    event.returnValue = false;
-                    return false;
-                }
-            };
+             function click(e) {
+             if (document.all) {
+             if (event.button==2||event.button==3) { alert("");
+            oncontextmenu='return false';
+             }
+             }
+             if (document.layers) {
+             if (e.which == 3) {
+             oncontextmenu='return false';
+             }
+             }
+             }
+             if (document.layers) {
+             document.captureEvents(Event.MOUSEDOWN);
+             }
+             document.onmousedown=click;
+             document.oncontextmenu = new Function("return false;")
+
+            document.onkeydown =document.onkeyup = document.onkeypress=function(){ 
+             if(window.event.keyCode == 123) { 
+             window.event.returnValue=false;
+             return(false); 
+             } 
+             } 
 </script>
 </head>
-<body background="https://i0.hdslb.com/bfs/emote/7496ff01fbac5304aa807732f1531d5986a0dfc3.png@112w_112h.webp" onload=clear()>
+<body background="https://i0.hdslb.com/bfs/emote/7496ff01fbac5304aa807732f1531d5986a0dfc3.png@112w_112h.webp" >
 <div class="example">U2FsdGVkX18210+rBpsVZEeAT/zGZ/vsDRWbZEcUYuXg1LL+QQYQNti5KV8O51+l
 mdcppLALaQae7AFwvu3l0VH+7BDJPnFjTchhIuAH/mZJUkvK8rUQcMDigKBVQOLb
 ZaThkjoQYUnqKxulj/DKtQ==</div>
